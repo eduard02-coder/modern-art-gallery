@@ -1,0 +1,13 @@
+@use 'abstracts' as *;
+
+@include breakpoint(desktop) {
+  @include desktop();
+}
+
+@include breakpoint(tablet) {
+  @include tablet();
+}
+
+@include breakpoint(mobile) {
+  @include mobile();
+}

@@ -1,0 +1,223 @@
+@use 'sass:math';
+
+@use '../../components/' as comp;
+@use '../../base/' as *;
+@use '../../layout/' as lay;
+
+@use '../mixins' as *;
+@use '../icomoon' as *;
+
+@mixin mobile {
+  $padding-left: 16px;
+  $padding-right: 16px;
+
+  body {
+    @include defaults;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: $font-1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      display: block;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 32px;
+      letter-spacing: 0px;
+      color: $dark-grey;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: $font-2;
+      font-weight: 900;
+      letter-spacing: 0px;
+      text-transform: uppercase;
+    }
+
+    figure {
+      width: fit-content;
+
+      > picture {
+        width: 100%;
+
+        > img {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+
+    button {
+      width: fit-content;
+    }
+  }
+
+  body.home {
+    > main,
+    > footer,
+    > header {
+      padding-left: $padding-left;
+      padding-right: $padding-right;
+    }
+
+    > header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 120px;
+
+      > .text {
+        padding-left: $padding-left;
+        padding-right: $padding-right;
+
+        > h1 {
+          font-size: 60px;
+          line-height: 55px;
+          margin-top: 32px;
+          margin-bottom: 32px;
+        }
+
+        > p {
+          font-size: 18px;
+          line-height: 28px;
+          margin-bottom: 32px;
+        }
+
+        > button {
+          border-style: none;
+        }
+
+        > .button-1 {
+          > a {
+            @include comp.button-1;
+          }
+        }
+
+        > .button-2 {
+          > a {
+            @include comp.button-2;
+          }
+        }
+      }
+    }
+
+    > main {
+      margin-bottom: 120px;
+
+      h2 {
+        font-size: 50px;
+        line-height: 45px;
+      }
+
+      > .top {
+        > .text-1 {
+          margin-top: 25px;
+          margin-bottom: 32px;
+
+          > p {
+            margin-top: 21px;
+            font-size: 18px;
+            line-height: 28px;
+          }
+        }
+      }
+
+      > .bottom {
+        > .image-4 {
+          margin: 16px 0;
+        }
+
+        > .text-2 {
+          background-color: $black;
+          padding: 48px 24px;
+          color: $white;
+          > p {
+            margin-top: 24px;
+            color: $white;
+
+            font-size: 18px;
+            line-height: 28px;
+          }
+        }
+      }
+    }
+
+    > footer {
+      @include lay.footer;
+    }
+  }
+
+  body.our-location {
+    > main,
+    > footer {
+      margin-left: auto;
+      margin-right: auto;
+
+      > .container {
+        margin-left: auto;
+        margin-right: auto;
+
+        padding-left: $padding-left;
+        padding-right: $padding-right;
+      }
+    }
+
+    > header > .container {
+      position: relative;
+      margin-bottom: 0;
+
+      > .button-2 {
+        border-style: none;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+
+        > a {
+          @include comp.button-2;
+        }
+      }
+    }
+
+    > main {
+      background-color: $black;
+
+      > .container {
+        padding-top: 48px;
+        padding-bottom: 56px;
+
+        margin-bottom: 0;
+        color: $white;
+
+        > h3 {
+          margin-top: 48px;
+          font-size: 32px;
+          line-height: 32px;
+          color: $gold;
+        }
+
+        > p {
+          color: $white;
+          font-size: 18px;
+          line-height: 28px;
+
+          &:first-of-type {
+            margin: 20px 0;
+          }
+        }
+      }
+    }
+
+    > footer {
+      @include lay.footer($gold);
+    }
+  }
+}

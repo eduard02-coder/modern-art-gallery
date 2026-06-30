@@ -1,0 +1,109 @@
+@use '../components/' as comp;
+@use '../base/' as *;
+@use '../abstracts/icomoon' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/responsive/breakpoints' as *;
+
+// --- auxiliary mixins
+@mixin -mobile-footer($bg-color: $black) {
+  background-color: $bg-color;
+
+  > .container {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    color: $white;
+
+    @if ($bg-color == $gold) {
+      color: $black;
+    }
+
+    > h3 {
+      max-width: 110px;
+      font-size: 22px;
+    }
+
+    > p {
+      margin: 38px 0;
+      font-size: 16px;
+      line-height: 26px;
+      color: $white;
+      @if ($bg-color == $gold) {
+        color: $black;
+      }
+    }
+
+    > .icons {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 100px;
+
+      > a {
+        @include icomoon;
+        @include comp.link-unstyled;
+        display: block;
+        font-size: 20px;
+
+        &:hover {
+          @include transition;
+
+          color: $gold;
+
+          @if ($bg-color == $gold) {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin -tablet-footer($bg-color: $black) {
+  @include -mobile-footer($bg-color);
+
+  > .container {
+    padding-top: 56px;
+    padding-bottom: 56px;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+
+    > p {
+      width: 37%;
+      margin: 0;
+      translate: -20px 0;
+    }
+  }
+}
+
+@mixin -desktop-footer($bg-color: $black) {
+  @include -tablet-footer($bg-color);
+
+  > .container {
+    > h3 {
+      font-size: 30px;
+      max-width: none;
+    }
+
+    > p {
+      font-size: 18px;
+      line-height: 28px;
+    }
+  }
+}
+
+// --- export mixin
+@mixin footer($bg-color: $black) {
+  @include breakpoint(mobile) {
+    @include -mobile-footer($bg-color);
+  }
+
+  @include breakpoint(tablet) {
+    @include -tablet-footer($bg-color);
+  }
+
+  @include breakpoint(desktop) {
+    @include -desktop-footer($bg-color);
+  }
+}

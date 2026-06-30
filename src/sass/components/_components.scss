@@ -1,0 +1,21 @@
+@use '../base' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/icomoon' as *;
+
+@mixin link-unstyled {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+@mixin link-hover {
+  color: $link-text-hover-color;
+  @include transition;
+}
+
+@mixin ul-links {
+  list-style: none;
+
+  > li > a {
+    @include link-unstyled;
+  }
+}

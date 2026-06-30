@@ -1,0 +1,64 @@
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/icomoon' as *;
+@use './components' as *;
+@use '../base' as *;
+
+@mixin -button-common($f-size: $base-font-size) {
+  @include link-unstyled;
+  font-family: $font-2;
+  color: $white;
+  line-height: 100%;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 3.64px;
+
+  cursor: pointer;
+  width: fit-content;
+  text-align: center;
+  border-style: none;
+  // padding: 24px 35px;
+  display: flex;
+  align-items: center;
+
+  &::after,
+  &::before {
+    @include icomoon;
+    display: block;
+    padding: 24px;
+    background-color: $gold;
+  }
+
+  &:hover {
+    @include transition;
+    background-color: $gold;
+
+    &::after,
+    &::before {
+      @include transition;
+      background-color: $black;
+    }
+  }
+}
+
+@mixin button-1($font-size: $base-font-size) {
+  @include -button-common($font-size);
+  background-color: $black;
+  padding-left: 35px;
+
+  &::after {
+    content: '\e901';
+    margin-left: 24px;
+  }
+}
+
+@mixin button-2($font-size: $base-font-size) {
+  @include -button-common($font-size);
+  background-color: $black;
+  padding-right: 35px;
+
+  &::before {
+    content: '\e900';
+    margin-right: 24px;
+  }
+}

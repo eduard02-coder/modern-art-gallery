@@ -1,0 +1,27 @@
+@use '../base/' as *;
+
+@mixin cards {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 60px;
+
+  > article {
+    display: block;
+
+    > img {
+      display: block;
+      padding-bottom: -50px;
+      translate: -20px 20px;
+
+      padding-bottom: 20px;
+    }
+
+    > h3 {
+      padding-bottom: 8px;
+    }
+
+    > p {
+      color: $gray-2;
+    }
+  }
+}
